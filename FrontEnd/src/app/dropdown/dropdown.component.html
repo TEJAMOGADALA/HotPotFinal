@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center align-items-center customBody">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <h1 class="accountTypeHeading">Choose account type</h1>
+        </div>
+        <div class="col-12 d-flex justify-content-center align-items-center">
+          <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label></label>
+              <select id="accountType" class="form-control" formControlName="accountType">
+                <option *ngFor="let type of accountTypes" [value]="type.value">{{ type.name }}</option>
+              </select>
+            </div>
+            <button type="submit" class="col-12 d-flex justify-content-center align-items-center btn btn-primary mt-3">Go</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  

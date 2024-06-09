@@ -36,10 +36,8 @@ export class CartDisplayComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private tokenservice : TokenserviceService,
-<<<<<<< HEAD
-=======
+
     private cdr : ChangeDetectorRef
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   ) { }
 
   ngOnInit(): void {
@@ -71,11 +69,6 @@ export class CartDisplayComponent implements OnInit {
     const increaseCart = `http://localhost:36000/api/Customer/IncreaseCartItemQuantity?cartId=${cartID}`;
     this.http.put(increaseCart, null, this.authHeader)
       .subscribe(
-<<<<<<< HEAD
-        response => console.log(response),
-        error => console.log(error)
-      );
-=======
         response => {
           console.log(response);
           this.fetchCartItems();
@@ -84,18 +77,13 @@ export class CartDisplayComponent implements OnInit {
         
       );
      
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   }
 
   decreaseCartItemQuantity(cartID: number): void {
     const decreaseCart = `http://localhost:36000/api/Customer/DecreaseCartItemQuantity?cartId=${cartID}`;
     this.http.put(decreaseCart, null, this.authHeader)
       .subscribe(
-<<<<<<< HEAD
-        response => console.log(response),
-        error => console.log(error)
-      );
-=======
+
         response => {
           console.log(response);
           this.fetchCartItems();
@@ -104,18 +92,13 @@ export class CartDisplayComponent implements OnInit {
         
       );
       this.cdr.detectChanges();
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   }
 
   deleteCartItem(cartID: number): void {
     const deleteCart = `http://localhost:36000/api/Customer/DeleteCartItem?cartId=${cartID}`;
     this.http.put(deleteCart, null, this.authHeader)
       .subscribe(
-<<<<<<< HEAD
-        response => console.log(response),
-        error => console.log(error)
-      );
-=======
+
         response => 
           {console.log(response);
             this.fetchCartItems();
@@ -123,7 +106,6 @@ export class CartDisplayComponent implements OnInit {
         error => console.log(error)
       );
       this.cdr.detectChanges();
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   }
 
   emptyCart(customerID: string): void {
@@ -134,10 +116,8 @@ export class CartDisplayComponent implements OnInit {
         response => console.log(response),
         error => console.log(error)
       );
-<<<<<<< HEAD
-=======
+
       this.cdr.detectChanges();
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   }
 
   purchaseAllItems(): void {

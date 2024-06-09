@@ -31,7 +31,14 @@ import { ThanYouComponent } from './than-you/than-you.component';
 import { AdminpageComponent } from './profiles/adminpage/adminpage.component';
 import { MenuComponent } from './menu/menu.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+<<<<<<< HEAD
 import { MenuRestaurantIdComponent } from './menu-restaurant-id/menu-restaurant-id.component';
+=======
+<<<<<<< HEAD
+=======
+import { MenuRestaurantIdComponent } from './menu-restaurant-id/menu-restaurant-id.component';
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
+>>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
 
 @NgModule({
   declarations: [
@@ -62,8 +69,17 @@ import { MenuRestaurantIdComponent } from './menu-restaurant-id/menu-restaurant-
     ThanYouComponent,
     AdminpageComponent,
     MenuComponent,
+<<<<<<< HEAD
     DropdownComponent,
     MenuRestaurantIdComponent
+=======
+<<<<<<< HEAD
+    DropdownComponent
+=======
+    DropdownComponent,
+    MenuRestaurantIdComponent
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
+>>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   ],
   imports: [
     BrowserModule,

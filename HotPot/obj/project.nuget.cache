@@ -1,6 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "HT24XS9gMLQ=",
+=======
+<<<<<<< HEAD
+  "dgSpecHash": "tBAbxzM3iEucm1dTWSOrd36DHCCOZSLcWT0aWJqwVo6jBdhPllWW7JQmjGSgv4AFZruxh5IScfjNdZrxeI1+ag==",
+=======
+  "dgSpecHash": "HT24XS9gMLQ=",
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
+>>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   "success": true,
   "projectFilePath": "C:\\Users\\Teja\\Desktop\\Dot-Net+ANgular\\Hexaware-FSD-HotPot-final-version\\HotPot\\HotPot.csproj",
   "expectedPackageFiles": [

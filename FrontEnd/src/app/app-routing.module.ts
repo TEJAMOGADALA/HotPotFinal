@@ -21,14 +21,29 @@ import { ThanYouComponent } from './than-you/than-you.component';
 import { AdminpageComponent } from './profiles/adminpage/adminpage.component';
 import { MenuComponent } from './menu/menu.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+<<<<<<< HEAD
 import { MenuRestaurantIdComponent } from './menu-restaurant-id/menu-restaurant-id.component';
+=======
+<<<<<<< HEAD
+=======
+import { MenuRestaurantIdComponent } from './menu-restaurant-id/menu-restaurant-id.component';
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
+>>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
 
 const routes: Routes = [
 {path:'home',component:HomeComponent},
 {path:'dropdown',component:DropdownComponent},
 {path:'explore-menu-section',component:ExploreMenuSectionComponent},
+<<<<<<< HEAD
 //Modification
 {path: 'menu-restaurant-id/:restaurantId', component: MenuRestaurantIdComponent },
+=======
+<<<<<<< HEAD
+=======
+//Modification
+{path: 'menu-restaurant-id/:restaurantId', component: MenuRestaurantIdComponent },
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
+>>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
 {path:'restaurant-dashboard',component:RestaurantDashboardComponent},
 {path:'cart-display',component:CartDisplayComponent},
 {path:'admin-sign-in',component:AdminSignInComponent},

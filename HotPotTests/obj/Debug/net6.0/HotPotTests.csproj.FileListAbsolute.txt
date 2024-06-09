@@ -292,9 +292,10 @@ C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTe
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.AssemblyInfoInputs.cache
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.AssemblyInfo.cs
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.csproj.CoreCompileInputs.cache
-C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.csproj.CopyComplete
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.dll
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\refint\HotPotTests.dll
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.pdb
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.genruntimeconfig.cache
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\ref\HotPotTests.dll
+C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTests.sourcelink.json
+C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPotTests\obj\Debug\net6.0\HotPotTe.15E1C5EE.Up2Date

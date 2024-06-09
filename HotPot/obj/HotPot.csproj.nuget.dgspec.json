@@ -34,20 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-<<<<<<< HEAD
-=======
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         }
       },
       "frameworks": {
@@ -92,15 +83,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
-=======
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         }
       }
     }

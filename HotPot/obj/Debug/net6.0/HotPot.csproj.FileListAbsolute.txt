@@ -134,9 +134,7 @@ C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\o
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\scopedcss\bundle\HotPot.styles.css
 <<<<<<< HEAD
 =======
-<<<<<<< HEAD
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.csproj.CopyComplete
-=======
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
 >>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.dll
@@ -144,13 +142,5 @@ C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\o
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.pdb
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.genruntimeconfig.cache
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\ref\HotPot.dll
-<<<<<<< HEAD
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.sourcelink.json
 C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.csproj.Up2Date
-=======
-<<<<<<< HEAD
-=======
-C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.sourcelink.json
-C:\Users\Teja\Desktop\Dot-Net+ANgular\Hexaware-FSD-HotPot-final-version\HotPot\obj\Debug\net6.0\HotPot.csproj.Up2Date
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054

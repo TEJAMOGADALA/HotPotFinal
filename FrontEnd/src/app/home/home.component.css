@@ -1,39 +1,7 @@
-<<<<<<< HEAD
 
-
-   .story-container{
-=======
-<<<<<<< HEAD
-.carousel-container {
-    width: 30%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .carouselitem {
-    display: flex;
-  }
-  
-  .carousel img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-
-  .custom-carousel{
-    margin-top: 12vh;
-    margin-bottom: 30px;
-    background-color: rgb(250, 246, 246);
-    padding : 8px;
-  }
-
-  .story-container{
-=======
 
 
    .story-container{
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
     margin-top: 20px;
 }
 
@@ -139,14 +107,7 @@
   color: #7b8794;
   font-family: "Roboto";
   font-size: 16px;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-}
-  
-  
-=======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
+
 } 
   
    
@@ -196,7 +157,4 @@
   max-width: 100%;
 }
 
-<<<<<<< HEAD
-=======
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HotPot.Controllers
 {
@@ -116,9 +117,12 @@ namespace HotPot.Controllers
         {
             try
             {
+
+
                 var result = await _services.GetAllMenus();
                 if (searchQuery!=null && searchQuery!= "")
                 {
+
                     result = result.Where(m => m.Name.ToLower().Contains(searchQuery) ||
                     m.Type.Contains(searchQuery) ||
                     m.Description.Contains(searchQuery) ||
@@ -140,11 +144,13 @@ namespace HotPot.Controllers
 
         [Route("GetMenuByRestaurant")]
         [HttpGet]
+
         public async Task<ActionResult<List<Menu>>> GetMenuByRestaurant(int restaurantId, [FromQuery] string? searchQuery)
         {
             try
             {
                 var result = await _services.GetMenuByRestaurant(restaurantId);
+
                 if (searchQuery != null && searchQuery != "")
                 {
                     result = result.Where(m => m.Name.ToLower().Contains(searchQuery) ||

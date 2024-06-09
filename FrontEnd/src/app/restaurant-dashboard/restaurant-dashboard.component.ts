@@ -142,16 +142,7 @@ export class RestaurantDashboardComponent {
       }
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    fetchMenus() {
-      const url = 'http://localhost:36000/api/Customer/GetMenuByRestaurant?restaurantId=1';
-      this.http.get<any[]>(url, this.authHeader)
-        .subscribe(
-          (response) => {
-=======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
+
     fetchMenus(restId:number) : void{
       console.log(restId);
       const url = `http://localhost:36000/api/Customer/GetMenuByRestaurant?restaurantId=${restId}`;
@@ -161,10 +152,6 @@ export class RestaurantDashboardComponent {
         .subscribe(
           (response) => {
             console.log(response);
-<<<<<<< HEAD
-=======
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
             this.menus = response;
           },
           (error) => {

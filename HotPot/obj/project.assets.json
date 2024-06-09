@@ -2864,6 +2864,7 @@
         "warnAsError": [
           "NU1605"
         ]
+
       },
       "restoreAuditProperties": {
         "enableAudit": "true",
@@ -2913,6 +2914,7 @@
             "privateAssets": "all"
           }
         },
+
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }

@@ -1,12 +1,5 @@
-<<<<<<< HEAD
+
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-=======
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { publishFacade } from '@angular/compiler';
@@ -44,13 +37,9 @@ export class CartDisplayComponent implements OnInit {
     private http: HttpClient,
     private tokenservice : TokenserviceService,
 <<<<<<< HEAD
-    private cdr : ChangeDetectorRef
-=======
-<<<<<<< HEAD
 =======
     private cdr : ChangeDetectorRef
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   ) { }
 
   ngOnInit(): void {
@@ -83,13 +72,10 @@ export class CartDisplayComponent implements OnInit {
     this.http.put(increaseCart, null, this.authHeader)
       .subscribe(
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
         response => console.log(response),
         error => console.log(error)
       );
 =======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         response => {
           console.log(response);
           this.fetchCartItems();
@@ -98,10 +84,7 @@ export class CartDisplayComponent implements OnInit {
         
       );
      
-<<<<<<< HEAD
-=======
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   }
 
   decreaseCartItemQuantity(cartID: number): void {
@@ -109,13 +92,10 @@ export class CartDisplayComponent implements OnInit {
     this.http.put(decreaseCart, null, this.authHeader)
       .subscribe(
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
         response => console.log(response),
         error => console.log(error)
       );
 =======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         response => {
           console.log(response);
           this.fetchCartItems();
@@ -124,10 +104,7 @@ export class CartDisplayComponent implements OnInit {
         
       );
       this.cdr.detectChanges();
-<<<<<<< HEAD
-=======
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   }
 
   deleteCartItem(cartID: number): void {
@@ -135,13 +112,10 @@ export class CartDisplayComponent implements OnInit {
     this.http.put(deleteCart, null, this.authHeader)
       .subscribe(
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
         response => console.log(response),
         error => console.log(error)
       );
 =======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         response => 
           {console.log(response);
             this.fetchCartItems();
@@ -149,10 +123,7 @@ export class CartDisplayComponent implements OnInit {
         error => console.log(error)
       );
       this.cdr.detectChanges();
-<<<<<<< HEAD
-=======
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   }
 
   emptyCart(customerID: string): void {
@@ -164,13 +135,9 @@ export class CartDisplayComponent implements OnInit {
         error => console.log(error)
       );
 <<<<<<< HEAD
-      this.cdr.detectChanges();
-=======
-<<<<<<< HEAD
 =======
       this.cdr.detectChanges();
 >>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
   }
 
   purchaseAllItems(): void {

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace HotPot.Controllers
 {
@@ -117,24 +116,10 @@ namespace HotPot.Controllers
         {
             try
             {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-                var result = await _services.GetAllMenus();
-                if (searchQuery!=null && searchQuery!= "")
-                {
-                    result = result.Where(m => m.Name.Contains(searchQuery) ||
-=======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
                 var result = await _services.GetAllMenus();
                 if (searchQuery!=null && searchQuery!= "")
                 {
                     result = result.Where(m => m.Name.ToLower().Contains(searchQuery) ||
-<<<<<<< HEAD
-=======
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
                     m.Type.Contains(searchQuery) ||
                     m.Description.Contains(searchQuery) ||
                     m.Cuisine.Contains(searchQuery) ||
@@ -155,24 +140,11 @@ namespace HotPot.Controllers
 
         [Route("GetMenuByRestaurant")]
         [HttpGet]
-<<<<<<< HEAD
         public async Task<ActionResult<List<Menu>>> GetMenuByRestaurant(int restaurantId, [FromQuery] string? searchQuery)
-=======
-<<<<<<< HEAD
-        public async Task<ActionResult<List<Menu>>> GetMenuByRestaurant(int restaurantId)
-=======
-        public async Task<ActionResult<List<Menu>>> GetMenuByRestaurant(int restaurantId, [FromQuery] string? searchQuery)
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
         {
             try
             {
                 var result = await _services.GetMenuByRestaurant(restaurantId);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
                 if (searchQuery != null && searchQuery != "")
                 {
                     result = result.Where(m => m.Name.ToLower().Contains(searchQuery) ||
@@ -182,10 +154,6 @@ namespace HotPot.Controllers
                     m.Restaurant.RestaurantName.Contains(searchQuery) ||
                     m.TasteInfo.Contains(searchQuery)).ToList();
                 }
-<<<<<<< HEAD
-=======
->>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
->>>>>>> 952a35f9d879de756371e65815067a1a9cefd054
                 return result;
             }
             catch (NoMenuAvailableException e)

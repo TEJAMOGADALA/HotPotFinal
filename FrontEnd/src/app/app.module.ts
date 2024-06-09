@@ -31,6 +31,10 @@ import { ThanYouComponent } from './than-you/than-you.component';
 import { AdminpageComponent } from './profiles/adminpage/adminpage.component';
 import { MenuComponent } from './menu/menu.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+<<<<<<< HEAD
+=======
+import { MenuRestaurantIdComponent } from './menu-restaurant-id/menu-restaurant-id.component';
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
 
 @NgModule({
   declarations: [
@@ -61,7 +65,12 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     ThanYouComponent,
     AdminpageComponent,
     MenuComponent,
+<<<<<<< HEAD
     DropdownComponent
+=======
+    DropdownComponent,
+    MenuRestaurantIdComponent
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   ],
   imports: [
     BrowserModule,

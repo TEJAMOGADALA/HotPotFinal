@@ -38,6 +38,14 @@
           "warnAsError": [
             "NU1605"
           ]
+<<<<<<< HEAD
+=======
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
         }
       },
       "frameworks": {
@@ -89,7 +97,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
         }
       }
     },
@@ -123,6 +135,14 @@
           "warnAsError": [
             "NU1605"
           ]
+<<<<<<< HEAD
+=======
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
         }
       },
       "frameworks": {
@@ -167,7 +187,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
         }
       }
     }

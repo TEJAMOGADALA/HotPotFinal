@@ -142,11 +142,23 @@ export class RestaurantDashboardComponent {
       }
     }
 
+<<<<<<< HEAD
     fetchMenus() {
       const url = 'http://localhost:36000/api/Customer/GetMenuByRestaurant?restaurantId=1';
       this.http.get<any[]>(url, this.authHeader)
         .subscribe(
           (response) => {
+=======
+    fetchMenus(restId:number) : void{
+      console.log(restId);
+      const url = `http://localhost:36000/api/Customer/GetMenuByRestaurant?restaurantId=${restId}`;
+      // Modification
+      this.router.navigate(['/menu-restaurant-id', restId]);
+      this.http.get<any[]>(url, this.authHeader)
+        .subscribe(
+          (response) => {
+            console.log(response);
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
             this.menus = response;
           },
           (error) => {

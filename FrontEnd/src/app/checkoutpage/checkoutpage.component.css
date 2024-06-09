@@ -1,0 +1,238 @@
+
+.profile-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  margin-top: 50px;
+  padding: 10px 20px;
+  background-color: #FC8019;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab-btn.active {
+  background-color: #FFA84D;
+}
+
+
+.tab-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.orders-tab table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-tab th,
+.orders-tab td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.orders-tab th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+.orders-tab tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+.payments-tab table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payments-tab th,
+.payments-tab td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.payments-tab th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+.payments-tab tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+.change-status-tab table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.change-status-tab th,
+.change-status-tab td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.change-status-tab th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+.change-status-tab tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+.add-menu-tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-menu-tab .form-group {
+  margin-bottom: 15px;
+}
+
+.add-menu-tab label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-menu-tab input,
+.add-menu-tab select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-menu-tab .error {
+  color: #FF0000;
+  margin-top: 5px;
+}
+
+.add-menu-button {
+  background-color: #FC8019;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-menu-button:hover {
+  background-color: #FFA84D;
+}
+
+.delete-menu-button {
+  background-color: #FC8019;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.delete-menu-button:hover {
+  background-color: #FFA84D;
+}
+.purchase-button {
+  margin-top: 10px;
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+  .purchase-button:hover {
+  background-color: #e0a800;
+  } 
+
+  .modifyButtonMenu {
+    padding: 5px;
+    width: 80px;
+    border-radius: 4px;
+    border: 0px;
+}
+
+.menu-item-card {
+  border-radius: 16px;
+  height : 35vh;
+}
+
+
+/* Container for the tiles */
+.tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Adjust the gap between tiles as needed */
+  padding: 16px;
+}
+
+/* Individual tile styling */
+.tile {
+  background-size: cover; /* Ensure the background image covers the entire tile */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  border: 1px solid #ddd; /* Border around each tile */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding inside each tile */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 200px; /* Adjust the width as needed */
+  height: 250px; /* Adjust the height as needed */
+  color: #fff; /* White text color for better contrast with images */
+  position: relative; /* Position relative for overlay */
+}
+
+/* Tile content styling */
+.tile-content {
+  position: absolute; /* Position content absolutely within the tile */
+  bottom: 16px; /* Align content to the bottom */
+  left: 16px; /* Align content to the left */
+  right: 16px; /* Align content to the right */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+  padding: 8px; /* Padding for the content area */
+  border-radius: 4px; /* Rounded corners for the content area */
+}
+
+.tile-content h4 {
+  margin: 0 0 8px; /* Margin for the title */
+  font-size: 1.25em; /* Font size for the title */
+}
+
+.tile-content p {
+  margin: 4px 0; /* Margin for paragraphs */
+}
+
+/* Total tile styling */
+.total-tile {
+  background-color: #f4efef; /* Different background color for total tile */
+  border-color: #00796b; /* Border color for total tile */
+  color: #00796b; /* Text color for total tile */
+}
+
+
+

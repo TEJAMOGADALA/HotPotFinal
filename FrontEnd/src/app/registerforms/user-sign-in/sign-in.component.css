@@ -1,0 +1,12 @@
+.links {
+    color: white;
+  }
+  .links a {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 100px; /* Adjust the value as needed */
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }

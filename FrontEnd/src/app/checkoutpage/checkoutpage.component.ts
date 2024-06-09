@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { TokenserviceService } from '../shared/tokenservice.service';
+import jspdf from 'jspdf';
 
 interface OrderSummary {
   cartId: number;
@@ -150,6 +151,34 @@ export class CheckoutpageComponent implements OnInit {
   handleTabChange(tab: string) {
     this.activeTab = tab;
   }
+
+  downloadPDF() {
+    var doc = new jspdf('l', 'mm', [295, 210]);
+    
+    
+    const header = ['MenuTitle', 'Quantity', 'Price','Shipping Address'];
+    let y = 20;
+    let x = 10;
+    let rows: { [key: string]: string }[] = [];
+    this.orderSummary.forEach((item: any) => {
+        const rowObject = {
+            'MenuTitle': item.menuTitle.toString(),
+            'Quantity': item.quantity.toString(),
+            'Price': item.price.toString(),
+            'Shipping Address': this.address.houseNumber.toString()+","+this.address.buildingName.toString()+","+this.address.locality.toString()
+            
+        };
+        rows.push(rowObject);
+        y += 10;
+    });
+    var config = {
+        autoSize: false,
+        printHeaders: true
+    }
+    doc.setFontSize(10);
+    doc.table(x, y, rows, header, config);
+    doc.save('order.pdf');
+}
 
 }
 

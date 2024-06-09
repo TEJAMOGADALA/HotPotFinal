@@ -138,4 +138,71 @@
   .change-status-tab button:hover {
     background-color: #e4363e;
   }
+
+  /* Modification */
   
+  .orders-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .order-tile {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    width: calc(33.333% - 1rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa; /* Add background color here */
+  }
+
+  .order-detail {
+    margin-bottom: 0.5rem;
+  }
+
+  .order-detail label {
+    font-weight: bold;
+  }
+
+  .order-action {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-action select,
+  .order-action button {
+    padding: 0.5rem;
+  }
+
+  .order-action button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .order-action button:hover {
+    background-color: #0056b3;
+  }
+
+  .centered-heading {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .purchase-button {
+    margin-top: 10px;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+  
+    .purchase-button:hover {
+    background-color: #e0a800;
+    } 

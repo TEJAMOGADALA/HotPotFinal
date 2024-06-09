@@ -117,11 +117,18 @@ namespace HotPot.Controllers
         {
             try
             {
+<<<<<<< HEAD
 
                 var result = await _services.GetAllMenus();
                 if (searchQuery!=null && searchQuery!= "")
                 {
                     result = result.Where(m => m.Name.Contains(searchQuery) ||
+=======
+                var result = await _services.GetAllMenus();
+                if (searchQuery!=null && searchQuery!= "")
+                {
+                    result = result.Where(m => m.Name.ToLower().Contains(searchQuery) ||
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
                     m.Type.Contains(searchQuery) ||
                     m.Description.Contains(searchQuery) ||
                     m.Cuisine.Contains(searchQuery) ||
@@ -142,11 +149,27 @@ namespace HotPot.Controllers
 
         [Route("GetMenuByRestaurant")]
         [HttpGet]
+<<<<<<< HEAD
         public async Task<ActionResult<List<Menu>>> GetMenuByRestaurant(int restaurantId)
+=======
+        public async Task<ActionResult<List<Menu>>> GetMenuByRestaurant(int restaurantId, [FromQuery] string? searchQuery)
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
         {
             try
             {
                 var result = await _services.GetMenuByRestaurant(restaurantId);
+<<<<<<< HEAD
+=======
+                if (searchQuery != null && searchQuery != "")
+                {
+                    result = result.Where(m => m.Name.ToLower().Contains(searchQuery) ||
+                    m.Type.Contains(searchQuery) ||
+                    m.Description.Contains(searchQuery) ||
+                    m.Cuisine.Contains(searchQuery) ||
+                    m.Restaurant.RestaurantName.Contains(searchQuery) ||
+                    m.TasteInfo.Contains(searchQuery)).ToList();
+                }
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
                 return result;
             }
             catch (NoMenuAvailableException e)

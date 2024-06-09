@@ -8,8 +8,13 @@
                 <h1 class="menu-section-heading">Restaurants</h1>
             </div>
             <div *ngFor="let item of restaurants" class="col-12 col-md-6 col-lg-3">
+<<<<<<< HEAD
                 <div class="shadow menu-item-card p-3 mb-3">
                     <img [src]="item.restaurantImage" class="menu-item-image " />
+=======
+                <div class="shadow menu-item-card p-3 mb-3" >
+                    <img [src]="item.restaurantImage" class="menu-item-image " alt="Fetch Menus" (click)="fetchMenus(item.restaurantId)" style="cursor: pointer;" />
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
                     <h1 class="menu-card-title">{{item.restaurantName}}</h1>
                     <button class="menu-item-link border-0" data-toggle="modal" attr.data-target="#{{item.restaurantName}}">
                         View All

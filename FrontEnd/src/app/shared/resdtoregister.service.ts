@@ -30,7 +30,11 @@ httpOptions = {
   
   public regRestaurant()
 {
+<<<<<<< HEAD
   this.RestaurantData.RestaurantId=0;
+=======
+  // this.RestaurantData.RestaurantId=0;
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
   return this.objHttp.post(this.AdminApiUrl, this.RestaurantData);
 }
 

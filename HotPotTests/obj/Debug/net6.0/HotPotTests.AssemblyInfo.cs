@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HotPotTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+968c04ba0afd4b7f21fd5530938291039d9c5341")]
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
 [assembly: System.Reflection.AssemblyProductAttribute("HotPotTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HotPotTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

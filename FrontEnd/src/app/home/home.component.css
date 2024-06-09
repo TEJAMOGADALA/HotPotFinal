@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .carousel-container {
     width: 30%;
     margin: 0 auto;
@@ -22,6 +23,11 @@
   }
 
   .story-container{
+=======
+
+
+   .story-container{
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)
     margin-top: 20px;
 }
 
@@ -127,6 +133,58 @@
   color: #7b8794;
   font-family: "Roboto";
   font-size: 16px;
+<<<<<<< HEAD
 }
   
   
+=======
+} 
+  
+   
+
+   /* General styles for the carousel */
+.custom-carousel {
+  width: 80%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel img {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+}
+
+.carousel-container {
+  width: 80%;
+  overflow: hidden;
+}
+
+.carousel-indicators {
+  bottom: 10px;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Specific styles to ensure the carousel takes the full width */
+.carousel.slide {
+  width: 100%;
+  max-width: 100%;
+}
+
+.carousel-item {
+  width: 100%;
+  max-width: 100%;
+}
+
+.carousel img {
+  width: 100%;
+  max-width: 100%;
+}
+
+>>>>>>> 46c0901 (Initial commit - Added project files excluding .vs directory)

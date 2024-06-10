@@ -1,0 +1,935 @@
+USE [master]
+GO
+/****** Object:  Database [HotPotDataBase]    Script Date: 10-06-2024 07:41:50 ******/
+CREATE DATABASE [HotPotDataBase]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'HotPotDataBase', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\HotPotDataBase.mdf' , SIZE = 73728KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'HotPotDataBase_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\HotPotDataBase_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [HotPotDataBase] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [HotPotDataBase].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [HotPotDataBase] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [HotPotDataBase] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [HotPotDataBase] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [HotPotDataBase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [HotPotDataBase] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [HotPotDataBase] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET RECOVERY FULL 
+GO
+ALTER DATABASE [HotPotDataBase] SET  MULTI_USER 
+GO
+ALTER DATABASE [HotPotDataBase] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [HotPotDataBase] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [HotPotDataBase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [HotPotDataBase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [HotPotDataBase] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [HotPotDataBase] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'HotPotDataBase', N'ON'
+GO
+ALTER DATABASE [HotPotDataBase] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [HotPotDataBase] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [HotPotDataBase]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 10-06-2024 07:41:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Carts]    Script Date: 10-06-2024 07:41:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Carts](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[RestaurantId] [int] NOT NULL,
+	[MenuItemId] [int] NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[Status] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Carts] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cities]    Script Date: 10-06-2024 07:41:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cities](
+	[CityId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[StateId] [int] NOT NULL,
+ CONSTRAINT [PK_Cities] PRIMARY KEY CLUSTERED 
+(
+	[CityId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CustomerAddresses]    Script Date: 10-06-2024 07:41:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CustomerAddresses](
+	[AddressId] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NULL,
+	[HouseNumber] [nvarchar](max) NULL,
+	[BuildingName] [nvarchar](max) NULL,
+	[Locality] [nvarchar](max) NULL,
+	[CityId] [int] NULL,
+	[LandMark] [nvarchar](max) NULL,
+ CONSTRAINT [PK_CustomerAddresses] PRIMARY KEY CLUSTERED 
+(
+	[AddressId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CustomerReviews]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CustomerReviews](
+	[ReviewId] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[RestaurantId] [int] NOT NULL,
+	[Rating] [int] NOT NULL,
+	[TextReview] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_CustomerReviews] PRIMARY KEY CLUSTERED 
+(
+	[ReviewId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Customers]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customers](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[Email] [nvarchar](max) NULL,
+	[Phone] [nvarchar](max) NULL,
+	[UserName] [nvarchar](450) NULL,
+ CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DeliveryPartners]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DeliveryPartners](
+	[PartnerId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Phone] [nvarchar](max) NOT NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[CityId] [int] NOT NULL,
+	[UserName] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_DeliveryPartners] PRIMARY KEY CLUSTERED 
+(
+	[PartnerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Menus]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Menus](
+	[MenuId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Type] [nvarchar](max) NULL,
+	[Price] [real] NOT NULL,
+	[Description] [nvarchar](max) NULL,
+	[Cuisine] [nvarchar](max) NULL,
+	[CookingTime] [time](7) NULL,
+	[TasteInfo] [nvarchar](max) NULL,
+	[ItemImage] [nvarchar](max) NULL,
+	[NutritionId] [int] NOT NULL,
+	[RestaurantId] [int] NOT NULL,
+ CONSTRAINT [PK_Menus] PRIMARY KEY CLUSTERED 
+(
+	[MenuId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[NutritionalInfos]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NutritionalInfos](
+	[NutritionId] [int] IDENTITY(1,1) NOT NULL,
+	[Calories] [real] NOT NULL,
+	[Fats] [real] NOT NULL,
+	[Proteins] [real] NOT NULL,
+	[Carbohydrates] [real] NOT NULL,
+ CONSTRAINT [PK_NutritionalInfos] PRIMARY KEY CLUSTERED 
+(
+	[NutritionId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrderItems]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderItems](
+	[OrderId] [int] NOT NULL,
+	[MenuId] [int] NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[SubTotalPrice] [real] NOT NULL,
+ CONSTRAINT [PK_OrderItems] PRIMARY KEY CLUSTERED 
+(
+	[OrderId] ASC,
+	[MenuId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Orders]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Orders](
+	[OrderId] [int] IDENTITY(1,1) NOT NULL,
+	[OrderDate] [datetime2](7) NOT NULL,
+	[Amount] [real] NOT NULL,
+	[Status] [nvarchar](max) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[RestaurantId] [int] NOT NULL,
+	[PartnerId] [int] NULL,
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[OrderId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payments]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payments](
+	[PaymentId] [int] IDENTITY(1,1) NOT NULL,
+	[PaymentMode] [nvarchar](max) NOT NULL,
+	[Amount] [real] NOT NULL,
+	[Status] [nvarchar](max) NOT NULL,
+	[Date] [datetime2](7) NOT NULL,
+	[OrderId] [int] NULL,
+ CONSTRAINT [PK_Payments] PRIMARY KEY CLUSTERED 
+(
+	[PaymentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RestaurantOwners]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RestaurantOwners](
+	[OwnerId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[RestaurantId] [int] NOT NULL,
+	[UserName] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_RestaurantOwners] PRIMARY KEY CLUSTERED 
+(
+	[OwnerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Restaurants]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Restaurants](
+	[RestaurantId] [int] IDENTITY(1,1) NOT NULL,
+	[RestaurantName] [nvarchar](max) NOT NULL,
+	[Phone] [nvarchar](max) NOT NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[CityId] [int] NOT NULL,
+	[RestaurantImage] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Restaurants] PRIMARY KEY CLUSTERED 
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RestaurantSpecialities]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RestaurantSpecialities](
+	[CategoryId] [int] IDENTITY(1,1) NOT NULL,
+	[RestaurantId] [int] NOT NULL,
+	[CategoryName] [nvarchar](max) NOT NULL,
+	[CategoryImage] [nvarchar](max) NULL,
+ CONSTRAINT [PK_RestaurantSpecialities] PRIMARY KEY CLUSTERED 
+(
+	[CategoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[States]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[States](
+	[StateId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_States] PRIMARY KEY CLUSTERED 
+(
+	[StateId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 10-06-2024 07:41:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[UserName] [nvarchar](450) NOT NULL,
+	[Password] [varbinary](max) NOT NULL,
+	[Role] [nvarchar](max) NOT NULL,
+	[Key] [varbinary](max) NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[UserName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20240306125857_hotpotmig', N'6.0.26')
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20240306142148_hotpotmig1', N'6.0.26')
+GO
+SET IDENTITY_INSERT [dbo].[Carts] ON 
+
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (8, 9, 4, 12, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (9, 9, 1, 9, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (10, 9, 1, 6, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (12, 10, 1, 6, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (13, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (14, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (15, 10, 1, 13, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (17, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (19, 10, 1, 13, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (21, 10, 1, 6, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (22, 10, 4, 9, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (23, 10, 4, 12, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (24, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (25, 10, 4, 9, 3, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (26, 10, 1, 6, 2, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (28, 10, 4, 12, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (30, 10, 1, 6, 8, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (32, 10, 4, 9, 4, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (35, 10, 4, 15, 2, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (37, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (38, 10, 4, 22, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (39, 10, 1, 26, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (40, 10, 4, 9, 2, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (41, 10, 4, 12, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (43, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (44, 10, 4, 9, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (45, 10, 4, 12, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (46, 10, 1, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (47, 10, 1, 21, 2, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (48, 9, 2, 15, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (50, 10, 2, 13, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (52, 10, 2, 13, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (56, 9, 2, 13, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (57, 9, 1, 15, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (58, 10, 3, 9, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (61, 10, 3, 12, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (62, 11, 1, 15, 1, N'added')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (63, 10, 2, 21, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (64, 10, 3, 12, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (65, 10, 1, 15, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (66, 10, 2, 26, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (67, 10, 3, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (68, 10, 3, 9, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (69, 9, 3, 9, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (70, 9, 3, 6, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (72, 9, 2, 21, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (73, 9, 3, 6, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (74, 9, 3, 9, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (75, 9, 3, 12, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (77, 9, 3, 6, 1, N'added')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (78, 9, 3, 12, 2, N'added')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (79, 9, 1, 13, 1, N'added')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (80, 9, 2, 22, 1, N'added')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (81, 10, 3, 12, 16, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (82, 10, 1, 13, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (83, 10, 2, 22, 2, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (84, 10, 3, 6, 2, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (85, 10, 2, 26, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (86, 10, 2, 21, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (87, 10, 1, 15, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (88, 10, 2, 26, 5, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (89, 10, 3, 9, 4, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (90, 10, 3, 30, 2, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (91, 10, 3, 30, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (92, 10, 1, 13, 3, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (93, 10, 2, 26, 3, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (94, 10, 3, 12, 3, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (95, 10, 3, 6, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (96, 10, 3, 9, 2, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (97, 10, 2, 6, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (98, 10, 2, 22, 1, N'deleted')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (99, 10, 2, 26, 1, N'purchased')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (100, 10, 2, 26, 1, N'added')
+INSERT [dbo].[Carts] ([Id], [CustomerId], [RestaurantId], [MenuItemId], [Quantity], [Status]) VALUES (101, 10, 2, 6, 1, N'added')
+SET IDENTITY_INSERT [dbo].[Carts] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Cities] ON 
+
+INSERT [dbo].[Cities] ([CityId], [Name], [StateId]) VALUES (1, N'Visakhapatnam', 1)
+INSERT [dbo].[Cities] ([CityId], [Name], [StateId]) VALUES (3, N'Hyderabad', 2)
+INSERT [dbo].[Cities] ([CityId], [Name], [StateId]) VALUES (4, N'Banglore', 3)
+INSERT [dbo].[Cities] ([CityId], [Name], [StateId]) VALUES (6, N'Srikakulam', 1)
+SET IDENTITY_INSERT [dbo].[Cities] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CustomerAddresses] ON 
+
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (2, 1, N'1-79', N'Safari', N'Boyapalem', 3, N'Water Tank')
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (3, 5, N'7-89', N'Mars', N'Guntur', 3, N'Food Court')
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (9, 9, N'1-79', N'Anil Hombale', N'Srikakulam', 1, N'Post Office')
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (10, 10, N'1-36', N'Suresh Residencies', N'Vizag', 4, N'Tele Towers')
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (11, 11, NULL, NULL, NULL, 1, NULL)
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (12, 12, NULL, NULL, NULL, 1, NULL)
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (13, 13, NULL, NULL, NULL, 1, NULL)
+INSERT [dbo].[CustomerAddresses] ([AddressId], [CustomerId], [HouseNumber], [BuildingName], [Locality], [CityId], [LandMark]) VALUES (14, 14, NULL, NULL, NULL, 1, NULL)
+SET IDENTITY_INSERT [dbo].[CustomerAddresses] OFF
+GO
+SET IDENTITY_INSERT [dbo].[CustomerReviews] ON 
+
+INSERT [dbo].[CustomerReviews] ([ReviewId], [CustomerId], [RestaurantId], [Rating], [TextReview]) VALUES (1, 1, 1, 4, N'Good')
+INSERT [dbo].[CustomerReviews] ([ReviewId], [CustomerId], [RestaurantId], [Rating], [TextReview]) VALUES (2, 5, 3, 5, N'Excellent')
+INSERT [dbo].[CustomerReviews] ([ReviewId], [CustomerId], [RestaurantId], [Rating], [TextReview]) VALUES (3, 8, 2, 4, N'Perfect')
+SET IDENTITY_INSERT [dbo].[CustomerReviews] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Customers] ON 
+
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (1, N'triveni', N'triveni@gmail.com', N'9876543210', N'trivi')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (5, N'Sai', N'sai@gmail.com', N'6667778889', N'teja')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (6, N'gowri', N'gowri@gmail.com', N'9573374669', N'mogadala')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (7, N'padmaja', N'padma@gmail.com', N'4564564567', N'padma')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (8, N'praveen', N'praveen@gmail.com', N'4564564567', N'pravesh')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (9, N'abc', N'abc@gmail.com', N'1231231234', N'abcd')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (10, N'customer', N'customer123@gmail.com', N'1234567899', N'customer')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (11, N'Harsha', N'harsha@gmail.com', N'3574683579', N'harsha')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (12, N'chaitanya', N'chaitanya@gmail.com', N'1234561234', N'chaitanya')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (13, N'Mansoor', N'mansoor@gmail.com', N'1231231231', N'mansoor')
+INSERT [dbo].[Customers] ([Id], [Name], [Email], [Phone], [UserName]) VALUES (14, N'123', N'srs@gmail.com', N'8688979284', N'Sreeram')
+SET IDENTITY_INSERT [dbo].[Customers] OFF
+GO
+SET IDENTITY_INSERT [dbo].[DeliveryPartners] ON 
+
+INSERT [dbo].[DeliveryPartners] ([PartnerId], [Name], [Phone], [Email], [CityId], [UserName]) VALUES (1, N'hemanth', N'9492621216', N'hemanth@gmail.com', 4, N'hemu')
+INSERT [dbo].[DeliveryPartners] ([PartnerId], [Name], [Phone], [Email], [CityId], [UserName]) VALUES (2, N'maha', N'8889997776', N'maha@gmail.com', 2, N'maha')
+INSERT [dbo].[DeliveryPartners] ([PartnerId], [Name], [Phone], [Email], [CityId], [UserName]) VALUES (3, N'Delivery Partner', N'9898989898', N'dp@gmail.com', 1, N'deliverypartner')
+SET IDENTITY_INSERT [dbo].[DeliveryPartners] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Menus] ON 
+
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (6, N'Burger', N'Non-Veg', 350, N'A handheld meal consisting of a grilled or fried patty served in a bun, often topped with various condiments and vegetables.', N'South Indian', CAST(N'00:00:30' AS Time), N'Juicy', N'https://img.freepik.com/free-photo/grilled-cheeseburger-with-tomato-sesame-bun-generative-ai_188544-12302.jpg?t=st=1710153128~exp=1710156728~hmac=15af7f5fbdb2fb2659d7409ffd4edda1ea75781a27b98fbe1b8b62235c28b10d&w=996', 1, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (9, N'Pizza', N'Non-Veg', 400, N'A round, savory dish made with a thin dough base topped with tomato sauce, cheese, and various ingredients, baked to perfection.', N'Italian', CAST(N'00:00:35' AS Time), N'
+Delicious', N'https://img.freepik.com/free-photo/crispy-mixed-pizza-with-olives-sausage_140725-3095.jpg?t=st=1710167887~exp=1710171487~hmac=c79508ddbe96665a62be78ba14a284d640075c753c531b3d633956875dc2a6e3&w=740', 3, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (12, N'Pastries', N' Veg', 150, N'Sweet or savory baked goods crafted from flour, butter, and other ingredients, offering a diverse array of flavors and textures', N'American', CAST(N'00:01:00' AS Time), N'Sweet', N'https://img.freepik.com/free-photo/homemade-chestnut-cake-sweet-vegan-chocolate-chestnut-brownie-bread-with-honey-caramel-sauce_123827-28456.jpg?t=st=1710153457~exp=1710157057~hmac=84322391e8916c8e3fac718ebc65bf1632aef5f3d8e9760d3d0cdeaf19460944&w=826', 3, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (13, N'Noodles', N'Non-Veg', 100, N'Versatile strands of dough, typically made from wheat or rice flour, served in various broths, sauces, or stir-fried dishes worldwide', N'Punjabi', CAST(N'00:20:00' AS Time), N'Spicy', N'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg?t=st=1710153498~exp=1710157098~hmac=2ede8f203534007f392b2f91b880499dab0082d09649c4136f1c5a6644717fdf&w=996', 1, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (15, N'Chilli-Chicken', N'Non-Veg', 300, N'Succulent pieces of chicken stir-fried with vibrant peppers, onions, and spices, creating a zesty and flavorful Indo-Chinese dish', N'Indian', CAST(N'00:00:35' AS Time), N'Spicy', N'https://img.freepik.com/premium-photo/chicken-skewers-plate-with-bowl-sauce-parsley-side_865967-1452.jpg?w=826', 1, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (21, N'Chicken-Rolls', N'Non-Veg', 190, N'Tender chicken pieces wrapped in soft flatbread, along with fresh vegetables and flavorful sauces, creating a satisfying handheld meal', N'Punjabi', CAST(N'00:00:40' AS Time), N'Wholesome', N'https://img.freepik.com/free-photo/side-view-shawarma-with-fried-potatoes-board-cookware_176474-3215.jpg?t=st=1710154952~exp=1710158552~hmac=8936c5b8e44f4fb2a64c08799ad5fd37fae3d0e179faf2defbb7029c7336122d&w=740', 1, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (22, N'Salads', N' Veg', 110, N' Fresh and vibrant combinations of leafy greens, vegetables, fruits, nuts, and dressings, offering a nutritious and flavorful culinary experience.', N'Indian', CAST(N'00:00:10' AS Time), N'Refreshing', N'https://img.freepik.com/free-photo/top-view-fresh-vegetables-white-flower-wooden-hammer-delicious-vegan-salad-dark-color-background_179666-47261.jpg?t=st=1710155061~exp=1710158661~hmac=4c5c456ac69d4334687b95c4fba81921f9ecf8904ae76474870b0a255675530b&w=826', 3, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (26, N'Dosa', N' Veg', 30, N'
+Dosa is a popular South Indian dish made from fermented rice and lentil batter, cooked into a thin, crispy pancake. Served with chutneys and sambar, it''s a delicious and versatile meal', N'South Indian', CAST(N'00:00:10' AS Time), N'Satisfying', N'https://img.freepik.com/premium-photo/masala-dosa-served-with-sambhar-coconut-chutney-isolated-white-background-top_247037-450.jpg?w=740', 3, 2)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (30, N'Chicken-Biryani', N'Non-Veg', 250, N'Fragrant,Delicios Food', N'Indian', CAST(N'00:00:45' AS Time), N'Savorous', N'https://img.freepik.com/free-photo/gourmet-chicken-biryani-with-steamed-basmati-rice-generated-by-ai_188544-13480.jpg?t=st=1709918282~exp=1709921882~hmac=93c73fe1385d8a6f7706cd3621f68a3d007b11b6eef37bdb6b79a0042b064d94&w=1060', 3, 3)
+INSERT [dbo].[Menus] ([MenuId], [Name], [Type], [Price], [Description], [Cuisine], [CookingTime], [TasteInfo], [ItemImage], [NutritionId], [RestaurantId]) VALUES (34, N'Ice-Cream', N'Veg', 350, N'Delicious', N'Butterscoch', NULL, N'Sweet', N'https://img.freepik.com/free-photo/delicious-ice-cream-with-topping_23-2150735486.jpg?t=st=1716702806~exp=1716706406~hmac=9318a34b9cb526bdcd58864bc2b7e43320342e450603f92d67c7b37a7c36d5bf&w=740', 1, 1)
+SET IDENTITY_INSERT [dbo].[Menus] OFF
+GO
+SET IDENTITY_INSERT [dbo].[NutritionalInfos] ON 
+
+INSERT [dbo].[NutritionalInfos] ([NutritionId], [Calories], [Fats], [Proteins], [Carbohydrates]) VALUES (1, 100, 200, 300, 400)
+INSERT [dbo].[NutritionalInfos] ([NutritionId], [Calories], [Fats], [Proteins], [Carbohydrates]) VALUES (2, 400, 300, 200, 100)
+INSERT [dbo].[NutritionalInfos] ([NutritionId], [Calories], [Fats], [Proteins], [Carbohydrates]) VALUES (3, 100, 300, 200, 400)
+INSERT [dbo].[NutritionalInfos] ([NutritionId], [Calories], [Fats], [Proteins], [Carbohydrates]) VALUES (4, 350, 250, 150, 450)
+SET IDENTITY_INSERT [dbo].[NutritionalInfos] OFF
+GO
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (6, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (7, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (7, 13, 1, 100)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (8, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (8, 13, 1, 100)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (9, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (9, 9, 3, 1200)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (10, 6, 2, 700)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (10, 12, 1, 150)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (12, 6, 8, 2800)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (12, 9, 4, 1600)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (12, 15, 2, 600)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (13, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (13, 22, 1, 110)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (14, 26, 1, 30)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (15, 9, 2, 800)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (15, 12, 1, 150)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (16, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (16, 9, 1, 400)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (16, 12, 1, 150)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (17, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (17, 21, 2, 380)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (18, 15, 1, 300)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (19, 13, 1, 100)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (20, 9, 1, 400)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (21, 12, 1, 150)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (22, 21, 1, 190)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (23, 12, 1, 150)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (24, 26, 1, 30)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (25, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (25, 9, 1, 400)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (26, 6, 1, 350)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (26, 12, 1, 150)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (27, 26, 3, 90)
+INSERT [dbo].[OrderItems] ([OrderId], [MenuId], [Quantity], [SubTotalPrice]) VALUES (28, 26, 1, 30)
+GO
+SET IDENTITY_INSERT [dbo].[Orders] ON 
+
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (1, CAST(N'2024-03-06T00:00:00.0000000' AS DateTime2), 250, N'delivered', 9, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (3, CAST(N'2024-03-05T00:00:00.0000000' AS DateTime2), 350, N'delivered', 9, 1, 2)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (4, CAST(N'2024-03-08T00:00:00.0000000' AS DateTime2), 450, N'delivered', 9, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (5, CAST(N'2024-03-10T00:00:00.0000000' AS DateTime2), 500, N'delivered', 9, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (6, CAST(N'2024-03-11T18:15:26.1736402' AS DateTime2), 1600, N'delivered', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (7, CAST(N'2024-03-11T18:19:15.7158816' AS DateTime2), 480, N'delivered', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (8, CAST(N'2024-03-11T19:43:59.4308304' AS DateTime2), 510, N'delivered', 10, 1, 3)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (9, CAST(N'2024-03-11T23:49:51.9862300' AS DateTime2), 1550, N'delivered', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (10, CAST(N'2024-03-12T02:44:30.6592656' AS DateTime2), 1100, N'delivered', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (11, CAST(N'2024-03-12T09:59:45.5442473' AS DateTime2), 250, N'placed', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (12, CAST(N'2024-03-12T16:36:09.7963662' AS DateTime2), 5085, N'on the way', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (13, CAST(N'2024-03-13T08:09:54.9528762' AS DateTime2), 460, N'delivered', 10, 1, 3)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (14, CAST(N'2024-03-13T08:20:08.9020320' AS DateTime2), 30, N'on the way', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (15, CAST(N'2024-03-13T11:52:15.8440317' AS DateTime2), 950, N'placed', 10, 1, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (16, CAST(N'2024-03-13T12:33:43.8393121' AS DateTime2), 1900, N'delivered', 10, 1, 3)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (17, CAST(N'2024-03-14T20:07:00.7692870' AS DateTime2), 730, N'placed', 10, 1, 3)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (18, CAST(N'2024-03-15T09:56:57.2520377' AS DateTime2), 325, N'on the way', 9, 2, 3)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (19, CAST(N'2024-03-15T10:07:36.4573198' AS DateTime2), 330, N'delivered', 10, 2, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (20, CAST(N'2024-03-15T12:30:26.8128694' AS DateTime2), 900, N'on the way', 10, 3, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (21, CAST(N'2024-03-15T12:50:37.8393300' AS DateTime2), 400, N'delivered', 10, 3, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (22, CAST(N'2024-03-15T13:46:18.8183588' AS DateTime2), 190, N'placed', 10, 2, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (23, CAST(N'2024-03-15T15:17:37.0312308' AS DateTime2), 150, N'placed', 10, 3, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (24, CAST(N'2024-03-15T15:18:47.2444974' AS DateTime2), 30, N'delivered', 10, 2, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (25, CAST(N'2024-03-15T15:39:57.2412132' AS DateTime2), 750, N'delivered', 10, 3, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (26, CAST(N'2024-05-25T11:11:49.9786295' AS DateTime2), 500, N'on the way', 9, 3, 3)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (27, CAST(N'2024-06-08T18:55:33.3430170' AS DateTime2), 90, N'delivered', 10, 2, 1)
+INSERT [dbo].[Orders] ([OrderId], [OrderDate], [Amount], [Status], [CustomerId], [RestaurantId], [PartnerId]) VALUES (28, CAST(N'2024-06-09T16:48:53.9614323' AS DateTime2), 30, N'placed', 10, 2, 1)
+SET IDENTITY_INSERT [dbo].[Orders] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Payments] ON 
+
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (1, N'Online', 300, N'Paid', CAST(N'2024-03-06T00:00:00.0000000' AS DateTime2), 3)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (2, N'COD', 450, N'Unpaid', CAST(N'2024-03-05T00:00:00.0000000' AS DateTime2), 3)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (3, N'online', 1600, N'successful', CAST(N'2024-03-11T18:15:26.2012890' AS DateTime2), 6)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (4, N'online', 480, N'successful', CAST(N'2024-03-11T18:19:15.7326724' AS DateTime2), 7)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (5, N'online', 510, N'successful', CAST(N'2024-03-11T19:43:59.4682475' AS DateTime2), 8)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (6, N'online', 1550, N'successful', CAST(N'2024-03-11T23:49:52.1014806' AS DateTime2), 9)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (7, N'online', 1100, N'successful', CAST(N'2024-03-12T02:44:30.6793154' AS DateTime2), 10)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (8, N'online', 250, N'successful', CAST(N'2024-03-12T09:59:45.5761487' AS DateTime2), 11)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (9, N'online', 5085, N'successful', CAST(N'2024-03-12T16:36:09.8240033' AS DateTime2), 12)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (10, N'online', 460, N'successful', CAST(N'2024-03-13T08:09:54.9832776' AS DateTime2), 13)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (11, N'online', 30, N'successful', CAST(N'2024-03-13T08:20:08.9186046' AS DateTime2), 14)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (12, N'online', 950, N'successful', CAST(N'2024-03-13T11:52:15.9668390' AS DateTime2), 15)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (13, N'online', 1900, N'successful', CAST(N'2024-03-13T12:33:43.8640687' AS DateTime2), 16)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (14, N'online', 730, N'successful', CAST(N'2024-03-14T20:07:00.8279439' AS DateTime2), 17)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (15, N'online', 325, N'successful', CAST(N'2024-03-15T09:56:57.2756196' AS DateTime2), 18)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (16, N'online', 330, N'successful', CAST(N'2024-03-15T10:07:36.4771068' AS DateTime2), 19)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (17, N'online', 900, N'successful', CAST(N'2024-03-15T12:30:26.8372883' AS DateTime2), 20)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (18, N'online', 400, N'successful', CAST(N'2024-03-15T12:50:37.8552447' AS DateTime2), 21)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (19, N'online', 190, N'successful', CAST(N'2024-03-15T13:46:18.8316612' AS DateTime2), 22)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (20, N'online', 150, N'successful', CAST(N'2024-03-15T15:17:37.0719146' AS DateTime2), 23)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (21, N'online', 30, N'successful', CAST(N'2024-03-15T15:18:47.2653519' AS DateTime2), 24)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (22, N'online', 750, N'successful', CAST(N'2024-03-15T15:39:57.2713153' AS DateTime2), 25)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (23, N'online', 500, N'successful', CAST(N'2024-05-25T11:11:50.0086925' AS DateTime2), 26)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (24, N'online', 90, N'successful', CAST(N'2024-06-08T18:55:33.3903315' AS DateTime2), 27)
+INSERT [dbo].[Payments] ([PaymentId], [PaymentMode], [Amount], [Status], [Date], [OrderId]) VALUES (25, N'online', 30, N'successful', CAST(N'2024-06-09T16:48:53.9993645' AS DateTime2), 28)
+SET IDENTITY_INSERT [dbo].[Payments] OFF
+GO
+SET IDENTITY_INSERT [dbo].[RestaurantOwners] ON 
+
+INSERT [dbo].[RestaurantOwners] ([OwnerId], [Name], [RestaurantId], [UserName]) VALUES (4, N'Suresh', 1, N'suresh')
+INSERT [dbo].[RestaurantOwners] ([OwnerId], [Name], [RestaurantId], [UserName]) VALUES (6, N'Shankar', 3, N'shankar')
+INSERT [dbo].[RestaurantOwners] ([OwnerId], [Name], [RestaurantId], [UserName]) VALUES (8, N'abc', 2, N'abc')
+INSERT [dbo].[RestaurantOwners] ([OwnerId], [Name], [RestaurantId], [UserName]) VALUES (9, N'sathvik', 4, N'sathvik')
+SET IDENTITY_INSERT [dbo].[RestaurantOwners] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Restaurants] ON 
+
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (1, N'Paradise', N'0000999987', N'paradise@gmail.com', 1, N'https://media-cdn.tripadvisor.com/media/photo-s/0d/7b/4d/5b/interior.jpg')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (2, N'Barbeque', N'9999000087', N'barbeque@gmail.com', 4, N'https://img.freepik.com/premium-photo/cafe-rocky-coast-capo-testa-santa-teresa-gallura-mediterranean-sea-sardinia-island-summer-italy-restaurant-veranda-with-tables-chairs-umbrellas-cagliari-province-mixed-media_250132-2078.jpg?w=900')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (3, N'DineDestiny', N'1111122222', N'dine@gmail.com', 1, N'https://b.zmtcdn.com/data/pictures/1/20039691/f5ee526fc7143eaade9480340c0217d9.jpeg?fit=around|960:500&crop=960:500;*,*')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (4, N'MFC', N'2222111133', N'mfc@gmail.com', 6, N'https://lh3.googleusercontent.com/PWgm_Z5lZqwROfZzVEij-HcFyp5xAaM1sa5nr5S5aGGwh-KZyvlpErzLnpfbA4KUXTCLhAfL7tph042gyBGN7ujmjg=w1200-rw')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (5, N'Salvadores Fine Dining', N'1212121212', N'salva@gmail.com', 6, N'https://media-cdn.tripadvisor.com/media/photo-s/13/48/1d/fb/an-option-to-enjoy-the.jpg')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (6, N'The Bangalore Cafe', N'3434343434', N'bang@gmail.com', 6, N'https://assets.gqindia.com/photos/5e05b242cc8eda000874c8e5/master/pass/top%20image.jpg')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (7, N'Ministry of Food', N'5675675678', N'cafe@gmail.com', 6, N'https://lh3.googleusercontent.com/p/AF1QipODbxTrvTK_D5hC2bwlcLA8wXT3UQKThQHSxLTA=s1360-w1360-h1020')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (8, N'Lifetree', N'7897897890', N'lifetree@gmail.com', 6, N'https://www.faena.com/sites/default/files/styles/cta/public/2020-08/Faena_hotel2_Tree_Of_Life%20%281%29.jpg?h=365a8b46&itok=mB1r3NDQ')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (9, N'Sky Kitchen', N'3456345678', N'advisor@gmail.com', 6, N'data:image/jpeg;base64,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')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (10, N'Saffron Restaurant', N'4684684689', N'saffron@gmail.com', 6, N'https://d4t7t8y8xqo0t.cloudfront.net/resized/750X436/eazytrendz%2F2669%2Ftrend20200113060319.jpg')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (11, N'Mountain Taste', N'2468246801', N'taste@gmail.com', 6, N'https://media-cdn.tripadvisor.com/media/photo-s/02/91/4d/73/getlstd-property-photo.jpg')
+INSERT [dbo].[Restaurants] ([RestaurantId], [RestaurantName], [Phone], [Email], [CityId], [RestaurantImage]) VALUES (12, N'Okra', N'3579135791', N'okra@gmail.com', 6, N'https://media-cdn.tripadvisor.com/media/photo-s/0d/7b/4d/5b/interior.jpg')
+SET IDENTITY_INSERT [dbo].[Restaurants] OFF
+GO
+SET IDENTITY_INSERT [dbo].[RestaurantSpecialities] ON 
+
+INSERT [dbo].[RestaurantSpecialities] ([CategoryId], [RestaurantId], [CategoryName], [CategoryImage]) VALUES (1, 2, N'Biryani', NULL)
+INSERT [dbo].[RestaurantSpecialities] ([CategoryId], [RestaurantId], [CategoryName], [CategoryImage]) VALUES (2, 1, N'FriedRice', NULL)
+INSERT [dbo].[RestaurantSpecialities] ([CategoryId], [RestaurantId], [CategoryName], [CategoryImage]) VALUES (3, 4, N'Pulav', NULL)
+SET IDENTITY_INSERT [dbo].[RestaurantSpecialities] OFF
+GO
+SET IDENTITY_INSERT [dbo].[States] ON 
+
+INSERT [dbo].[States] ([StateId], [Name]) VALUES (1, N'Andhra Pradesh')
+INSERT [dbo].[States] ([StateId], [Name]) VALUES (2, N'Telangana')
+INSERT [dbo].[States] ([StateId], [Name]) VALUES (3, N'Karnataka')
+INSERT [dbo].[States] ([StateId], [Name]) VALUES (4, N'Kerela')
+INSERT [dbo].[States] ([StateId], [Name]) VALUES (5, N'Orissa')
+SET IDENTITY_INSERT [dbo].[States] OFF
+GO
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'abc', 0x11A9F72F30DBD6D1038B792B3C302B552830E4C3A119C407C25EF39B1B78D60B17FC66D95FBCBBD2A75201C2E1A1C30F5AB2A5EC3C2E6511696EAA4E87CDB920, N'RestaurantOwner', 0x54E5291E95699989DF6C8288F9D8FF76093A751B90BCB8306B341FE17FD869284ECADB9B422160B5D129428B4C29E203955D0DF3A79A9B69D583D7A66966AC81F4B2D222455A5430249F70682FC68673C88F517B9165A5F2B8B7E049A1A2ABBB1F4DE34815A2FFDC8C5D1621E92543E25BB12818D08F48FAC47DADBC969CCFBC)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'abcd', 0xAFC2292DFB75AD86D057B6653F8BD0A5EE4B7ED4FF03E69C8C1824AFB055FBD40F3283A8B18F606422C523DB2E5F5B43F7B31C3984EF5145471D1ECE1A5ABCD0, N'Customer', 0x2F8FE78023F0DE74C65510C2C1CA849A0F9F2EC6623A68DDFF724F03AF0D4F05F5BFD5A25183E4C93D659582CDE361798A1BE95A62FDB4996498FB25D3BF08723FA4F741C51F77B5EF1D48E9A37D43A652A1A7D44738F1BAC3836EAA3BD4FBB147ABF4B88BBCCB1211F21435833A674E5C7A4C9BB504B71745F53D49C5320038)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'admin', 0x99D7DE37228B40600310C926FA1D946DDD126B7889D1AF04FAEA7AB3A2D48C42373DAF98C46FDC4B990B42E7D9D47EFB606117094C6ACF92CC31C1C428764DFE, N'Admin', 0x534052844618D9496E033D12CC811BA71CAD86F8A8D1D04887C1C89A7FE757E037B7862FADDFB6A02EA8C27F6D27E1553C513A2D6AC6598D19C1F865F5D9734F5E4F30F13094C4DD573ECD1BE9925F34385442CF4C16D1800CAF7918143AD057DB8B7942358C330E3E47F654B3A3D27C2C00E4377AB2BA7BED835BADE3AEC0E1)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'chaitanya', 0xC1D727BC3CB5747FBCBAC78AE65E56573108E16AF00D7084BC605741C531B35A0D91A7855231F3D6F51DFE354EAD4CCF7B14DCF69827B67566663B090A9B1627, N'Customer', 0x99C2A490D0B9EA883FEF2D8ACD4B1F664DFB77B1D8467C7A1982194F8AC12E27F23CCAE6527EAE7A0679D491A204F5AC35A11E59C9C78DBA95B2FA6C8B6F28BEBE3651CA89EDAAA3AD0F3D16531BF2A9E15B25CDF15ECFCCA6BA1EB08FCD50759C2F0B6EE23871082FBFC70E74DBFF7301D104376821F678E8B57577F918747B)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'chitra', 0x3DA78881507EA89793151D44EE0F66B009FDF6C611658D8BAD438E6949C47C6CEC761845569B4D28A3CCE4048B60A5368B3CCE5828625B08CB703B42400F265A, N'Admin', 0x583782A432C1037FBF940B556249DD8CE2FF5E9468EEB5A41F5FDB39B1A77D72910323CFC4CB16D259D9DEA53A2C34A16346D55444642F6EFBB08F9E4073D277E72446B79CF1618E32C27EAF522086A127A5FD6283C34468A152C5DEADF3FD610E952507DB5A21E71B6D6540E6399E515EE759C4068A328AA1E0964191D4EEE7)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'customer', 0x34B3BB22F7F4847C25316E6CA4F5187BEBE259E7FE741C3FB690C81EABD7E1A8DEA56279671DA4C910C3AAB157567EE7F39379D0B260A4F7963DE05C4B831E66, N'Customer', 0x77F015E0B30BC3FB10B63BB7B4EAE6DBDF778D1BFA39D357A5D47B9FD5D4865077B33ABC8ED7922618F7A3349F026176BCD3E196A638540F66C106246FEFD5FD9C1342191A428C73F4FC7ADB3F689D9C56FC1291C01C738653AB8D81EF8C9CB4E7F615FB54CA33785C41E12091AB12076F01530C589B971B4F78D3716CBBD79E)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'deliverypartner', 0xC5097C969B21924F2CD6B7EE247F18B1E6E2D93E42304104D3282DA3A9C9615FD6EB1845BD2F30F42E96338C9759145C459E216FF460C2F007426687DB026C28, N'DeliveryPartner', 0x38AFEDBC7358F57280F2837BEE66B20FA11CD8FE0E84FB36533711F83B05A2D5A67868BC6FA0DFAD95CC03562A4BD015C9D7CEFDD5E56B321E5F6FD94B77BF01E4DB5E7990BC781B23A28BF7D3F4DD6227AAD0E8D57EBDF3C3938F97498CF4F58C06A3A5A6E8638C1B5014E32A0854C8DB1C5AA494527C0D9A0A8AA951899852)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'harsha', 0x14A9804456D2C1C957F86EFF406ED8D2E81A02F147144731153046F43CFFBBF1D9DFDAB85FA4642F6DCD8A4BEC4390315CBE38D83680339EF09A9977C7BBF088, N'Customer', 0x36C1E9E74EF067B8C6291B95125614017A877991730592F7D36CECBAFB8425B9EA429125F05F98652B6CB4B8BB2FD14728982BE0894F5EB6400170D47FB5325EA4CDA7892449EB9305CF79FE69DD34F6B4D50C29173C9F49552E01AEA93DD544784E4D1F2D42A227DAAC761670CC56D7A69A3039448EC502B02D0A19CA27A3A4)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'hemu', 0x0FD73F13633A9D32A8531AEDD75E579096F78CAD625E38D053E527034060118EC3E377CB143B5E39B8CCA576AFD747A7DA938911E52C1E3AA0BC9BEE329539B6, N'DeliveryPartner', 0x63A73F4A99786C130BAFD1EC2A9FABEFE8C65E7D9B6E642E15FFEA2ED844C2C9DEED8A9F5CF58425D94E3BED258631BEA17E7D9B7348C68AC1F5ECF64DB1E4656C7EF28309FD38AE7FA78FD897D4C868F7CCE85074B56CDC90291D77DE794D674B31BB39F9D0C7E06E3CFBA0140C3507AD58D1C716783BE9F0141F3068751535)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'mansoor', 0x21BE9615BC2B338346E270EBFB0D33A9840D44119A84599060335018587FEDCDC175B07D70D8FD825BDF1A001C70CFB1F1F7A7B02EC2E45D9A68C7BC605F7A9E, N'Customer', 0x1B243A4D9A1E4016D36650A3980C804602C815C0400894D83EA6B35EA70692677675999FB2F86136FA3BD851F9DEBB3DB11711AB0EBAF0673D208893D07BB64433CAC5BF74DEA9BE099CB4FE50FBCA989E0D23684F1EBA3250F9334C64F69D1CBBEBF1F42CC3FBDAED438C0D0DB11C4CC5E83F9C1FE35E8609E722C767C8B416)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'mogadala', 0x4AF4A861F9821B54A978B05B9AD02436EA2CC2CDC3558F579F6D619A76E1CD4B50F2354006C64A799CD194CEC7CCA50ED31E908F60CA6244D84A0354019AC411, N'Customer', 0x72052F42C471ACD58345C7524A097E6962ADA2505D5188C02B4D33FD7B61B4DB8745A7DCE74399E584C7E5108EB0F4BFB331B5B1F2239910D8909E2FF6CD4824C8EFB0DFED2F1CA34D0C10F4F81E1B902707FEB7EC4615459FFA665ECF9F07E026EDC67788DD74695DBFECB9B8DBEEDE6E92C2B3F8B777D05997AE5746A47644)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'padma', 0x2A498AA6DDC502E128F484C94204AA0E1DBEB5E52635B6CE8091EE77B533B6125D72F9DBEFB52AA6BB6DABD9A6FE4BA552F447938E9AA49D7F907C7DE3D27730, N'Customer', 0x7C7E234258223BF6F58F4B017D96CB4AD6421FF929258BD8A8C49AD492D6BDDCB4F071859E1C319B610ADF652A902DA8556C1F9BECA8424AF2C5EE36B9715FC070A0BB309A78B1A597F44DE9742D712877F818AF66C421E0450D1B16F32A1BBE6132DCD22EBEB4E6ADDF933459A9838F330D63D77CCAE91B26C1CC0572482DB5)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'pravesh', 0x7FAE6338EFBE8CF494F28881FEC398A55948364EF498293E9B6882FEEA11AD0A26D2A36742C3DF1E0552A8EF43F4B60A33898F1656047F781AB6CCEE7CCFB85F, N'Customer', 0x23681D58C0281B81DCA48B65B3332308E7F0510938D77C4CC71B29936FFB8F42EE27F2E6669FE0015D8072134EA0384624B619F35DD9DD777F7916B9C26B6F605935D6E9D3ECB74F37C2CED4289CA6710CE2712A58ADEF55C2959EE0E7B4AC8216D8506CB2C96715A30E0FB847D243D1B359CF9F01A542292C16E36A1E13633C)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'sathvik', 0xCEED43F5E4E2F92A907194B76112C2D305AFE383270957FC87D9794FB288D860CB3AE6D53CD2D26719E5D72B2F6067324B6C8555A8E4474FBAD64FD235A60287, N'RestaurantOwner', 0x8513F0F758603061468956A612CF36DA597911EE46AB804C2A4EF36541C7BD2D57166F0D78DE055FDE50F6BAE25DB599DFAB394EC0911BEF925922D094AAD8297ED146014D0104FAC033F66D0ECCCE1E5069441D668C42C639B25AED87576D672F10A98F503428A1552F61F45643A48153EE3202B71122CEE779EB8D0DC6D53F)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'shankar', 0xCA631C0F083B446022752AEFDEC4C57E9C91463C29B492B82DD16DC0663CF72A3EABEEDBF428C1F4DCF560CD5BBAA2EC82ACEC257795EB38841F0896084B5133, N'RestaurantOwner', 0xFF113FE94A0B73BC26A1D65B671328D42AE5ABB035B341BA1C674675104D4C16F0E78849BD38B7AB6E8CA5668CA565F1398EF95FAF2DA8EFEDD9417E7CDC30D7AE42FAD0F4FE9CF19D7F2D6CAF3BEDFEE76BC41D702813A58DAB751E772651570DADAAC9428247418E216623F24BDF76CD7C33A710B8A6E71F81363DADFA59A8)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'Sreeram', 0x2B543C4122A1C890F3E6E393AF587B14AAA41D20FF84BA20B8B3B8DD36E35836EF4993A02A189863976A3606A150A5521EE2B1C262CFCF3988278C43A43990D8, N'Customer', 0xB322CC6B2DC8FB29F1698E090706ACF48F4D1341D915825F363B48128D661489D7242FA55B1927FC3B8D8F10E986E9656EB6726521F6FE9FD913AD79B7706F9C18A6E76B31355CA60D518CA084A22C8E7AC7B40006222DBF5B3DA353E1C1332E9527844F889E4A4DCB088C21549D18597281C68D8092198A910FC6C8F36770EB)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'suresh', 0x37199E45D54421BD73DC3833B25AB9092596EBA4CD58B2C185CC81E495DB03F56C1B6C03F30CBB522F27CD2651046CC63AE722264CFCB03E86A671AE76F39D28, N'RestaurantOwner', 0xAF1A41A62B75ACB0DE99150C347DB6D2495D5A39A641068113BD1EEB7D718EFDE7EC8D4F0572D555D09FF0099853EC7A21C5F7AADBFA5F29F47E1BA9A93C2F2BA92A21FE4B0B916A0A19F60995CEC57CF21FB10ADCC28C49DBBE4CD3F3DE9647FCA5953F975157CFEA81195173302333956067DB3F2E97CC320A95A2F0234234)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'teja', 0xDB5AD54327F857D8A77A14EFC5D889991F59726312F0A9E2CD7A94D8A6BAE7016D021B082C2FB8BB44705E9AD2D5EEA677FA861CB99F4298A75F3ABA4FFA51A6, N'Admin', 0x7CBE84A02F0B6E5CB089F929B3806816ACBA558BBD5B73630BAA476615D162706143C646B46D8B4212B6ACD4EA45527B3C2939D30F8B144142D9299581BBD16854B6762FEF618CF016D7ED01410BE752F2916B358C092D0B752E53B96D3FDDECA19982C7CD38FD8824FC8A970A0E88C1198A6089D0A6D1BE2F24EC2F5F1F3434)
+INSERT [dbo].[Users] ([UserName], [Password], [Role], [Key]) VALUES (N'trivi', 0x59D2144EB76D7895B4672EC20B6A5767FF02E58256D5CFE6484FF55C598DFCC4A05EFE28239918495A8C2B9AB345B65349F4AB65EB112DD00C905C1FC737D7C4, N'Customer', 0x2FBE5AAD8C23296C536AAC80E8038B9B5D3521DA87B92D79FC753BA214BED554AD142B7E222957490C77D04890538912544DE75F7438833D687C5FFE1146BF73218624BCFBF79E438C7149C630E7AD6145618DF057A13CF4EC395E6E72C39700BC37484EC583D055DEE429580D0F54B59D4204E012DF8CA8AB40AF7E10F81568)
+GO
+/****** Object:  Index [IX_Carts_CustomerId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Carts_CustomerId] ON [dbo].[Carts]
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Carts_MenuItemId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Carts_MenuItemId] ON [dbo].[Carts]
+(
+	[MenuItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Carts_RestaurantId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Carts_RestaurantId] ON [dbo].[Carts]
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Cities_StateId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Cities_StateId] ON [dbo].[Cities]
+(
+	[StateId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_CustomerAddresses_CityId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_CustomerAddresses_CityId] ON [dbo].[CustomerAddresses]
+(
+	[CityId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_CustomerAddresses_CustomerId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_CustomerAddresses_CustomerId] ON [dbo].[CustomerAddresses]
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_CustomerReviews_CustomerId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_CustomerReviews_CustomerId] ON [dbo].[CustomerReviews]
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_CustomerReviews_RestaurantId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_CustomerReviews_RestaurantId] ON [dbo].[CustomerReviews]
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Customers_UserName]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Customers_UserName] ON [dbo].[Customers]
+(
+	[UserName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Menus_NutritionId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Menus_NutritionId] ON [dbo].[Menus]
+(
+	[NutritionId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Menus_RestaurantId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Menus_RestaurantId] ON [dbo].[Menus]
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_OrderItems_MenuId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_OrderItems_MenuId] ON [dbo].[OrderItems]
+(
+	[MenuId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Orders_CustomerId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Orders_CustomerId] ON [dbo].[Orders]
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Orders_PartnerId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Orders_PartnerId] ON [dbo].[Orders]
+(
+	[PartnerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Orders_RestaurantId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Orders_RestaurantId] ON [dbo].[Orders]
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Payments_OrderId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Payments_OrderId] ON [dbo].[Payments]
+(
+	[OrderId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_RestaurantOwners_RestaurantId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_RestaurantOwners_RestaurantId] ON [dbo].[RestaurantOwners]
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_RestaurantOwners_UserName]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_RestaurantOwners_UserName] ON [dbo].[RestaurantOwners]
+(
+	[UserName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Restaurants_CityId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_Restaurants_CityId] ON [dbo].[Restaurants]
+(
+	[CityId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_RestaurantSpecialities_RestaurantId]    Script Date: 10-06-2024 07:41:51 ******/
+CREATE NONCLUSTERED INDEX [IX_RestaurantSpecialities_RestaurantId] ON [dbo].[RestaurantSpecialities]
+(
+	[RestaurantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Carts]  WITH CHECK ADD  CONSTRAINT [FK_Carts_Customers_CustomerId] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Carts] CHECK CONSTRAINT [FK_Carts_Customers_CustomerId]
+GO
+ALTER TABLE [dbo].[Carts]  WITH CHECK ADD  CONSTRAINT [FK_Carts_Menus_MenuItemId] FOREIGN KEY([MenuItemId])
+REFERENCES [dbo].[Menus] ([MenuId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Carts] CHECK CONSTRAINT [FK_Carts_Menus_MenuItemId]
+GO
+ALTER TABLE [dbo].[Carts]  WITH CHECK ADD  CONSTRAINT [FK_Carts_Restaurants_RestaurantId] FOREIGN KEY([RestaurantId])
+REFERENCES [dbo].[Restaurants] ([RestaurantId])
+GO
+ALTER TABLE [dbo].[Carts] CHECK CONSTRAINT [FK_Carts_Restaurants_RestaurantId]
+GO
+ALTER TABLE [dbo].[Cities]  WITH CHECK ADD  CONSTRAINT [FK_Cities_States_StateId] FOREIGN KEY([StateId])
+REFERENCES [dbo].[States] ([StateId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Cities] CHECK CONSTRAINT [FK_Cities_States_StateId]
+GO
+ALTER TABLE [dbo].[CustomerAddresses]  WITH CHECK ADD  CONSTRAINT [FK_CustomerAddresses_Cities_CityId] FOREIGN KEY([CityId])
+REFERENCES [dbo].[Cities] ([CityId])
+GO
+ALTER TABLE [dbo].[CustomerAddresses] CHECK CONSTRAINT [FK_CustomerAddresses_Cities_CityId]
+GO
+ALTER TABLE [dbo].[CustomerAddresses]  WITH CHECK ADD  CONSTRAINT [FK_CustomerAddresses_Customers_CustomerId] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customers] ([Id])
+GO
+ALTER TABLE [dbo].[CustomerAddresses] CHECK CONSTRAINT [FK_CustomerAddresses_Customers_CustomerId]
+GO
+ALTER TABLE [dbo].[CustomerReviews]  WITH CHECK ADD  CONSTRAINT [FK_CustomerReviews_Customers_CustomerId] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[CustomerReviews] CHECK CONSTRAINT [FK_CustomerReviews_Customers_CustomerId]
+GO
+ALTER TABLE [dbo].[CustomerReviews]  WITH CHECK ADD  CONSTRAINT [FK_CustomerReviews_Restaurants_RestaurantId] FOREIGN KEY([RestaurantId])
+REFERENCES [dbo].[Restaurants] ([RestaurantId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[CustomerReviews] CHECK CONSTRAINT [FK_CustomerReviews_Restaurants_RestaurantId]
+GO
+ALTER TABLE [dbo].[Customers]  WITH CHECK ADD  CONSTRAINT [FK_Customers_Users_UserName] FOREIGN KEY([UserName])
+REFERENCES [dbo].[Users] ([UserName])
+GO
+ALTER TABLE [dbo].[Customers] CHECK CONSTRAINT [FK_Customers_Users_UserName]
+GO
+ALTER TABLE [dbo].[Menus]  WITH CHECK ADD  CONSTRAINT [FK_Menus_NutritionalInfos_NutritionId] FOREIGN KEY([NutritionId])
+REFERENCES [dbo].[NutritionalInfos] ([NutritionId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Menus] CHECK CONSTRAINT [FK_Menus_NutritionalInfos_NutritionId]
+GO
+ALTER TABLE [dbo].[Menus]  WITH CHECK ADD  CONSTRAINT [FK_Menus_Restaurants_RestaurantId] FOREIGN KEY([RestaurantId])
+REFERENCES [dbo].[Restaurants] ([RestaurantId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Menus] CHECK CONSTRAINT [FK_Menus_Restaurants_RestaurantId]
+GO
+ALTER TABLE [dbo].[OrderItems]  WITH CHECK ADD  CONSTRAINT [FK_OrderItems_Menus_MenuId] FOREIGN KEY([MenuId])
+REFERENCES [dbo].[Menus] ([MenuId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[OrderItems] CHECK CONSTRAINT [FK_OrderItems_Menus_MenuId]
+GO
+ALTER TABLE [dbo].[OrderItems]  WITH CHECK ADD  CONSTRAINT [FK_OrderItems_Orders_OrderId] FOREIGN KEY([OrderId])
+REFERENCES [dbo].[Orders] ([OrderId])
+GO
+ALTER TABLE [dbo].[OrderItems] CHECK CONSTRAINT [FK_OrderItems_Orders_OrderId]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Customers_CustomerId] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Customers_CustomerId]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_DeliveryPartners_PartnerId] FOREIGN KEY([PartnerId])
+REFERENCES [dbo].[DeliveryPartners] ([PartnerId])
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_DeliveryPartners_PartnerId]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Restaurants_RestaurantId] FOREIGN KEY([RestaurantId])
+REFERENCES [dbo].[Restaurants] ([RestaurantId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Restaurants_RestaurantId]
+GO
+ALTER TABLE [dbo].[Payments]  WITH CHECK ADD  CONSTRAINT [FK_Payments_Orders_OrderId] FOREIGN KEY([OrderId])
+REFERENCES [dbo].[Orders] ([OrderId])
+GO
+ALTER TABLE [dbo].[Payments] CHECK CONSTRAINT [FK_Payments_Orders_OrderId]
+GO
+ALTER TABLE [dbo].[RestaurantOwners]  WITH CHECK ADD  CONSTRAINT [FK_RestaurantOwners_Restaurants_RestaurantId] FOREIGN KEY([RestaurantId])
+REFERENCES [dbo].[Restaurants] ([RestaurantId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[RestaurantOwners] CHECK CONSTRAINT [FK_RestaurantOwners_Restaurants_RestaurantId]
+GO
+ALTER TABLE [dbo].[RestaurantOwners]  WITH CHECK ADD  CONSTRAINT [FK_RestaurantOwners_Users_UserName] FOREIGN KEY([UserName])
+REFERENCES [dbo].[Users] ([UserName])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[RestaurantOwners] CHECK CONSTRAINT [FK_RestaurantOwners_Users_UserName]
+GO
+ALTER TABLE [dbo].[Restaurants]  WITH CHECK ADD  CONSTRAINT [FK_Restaurants_Cities_CityId] FOREIGN KEY([CityId])
+REFERENCES [dbo].[Cities] ([CityId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Restaurants] CHECK CONSTRAINT [FK_Restaurants_Cities_CityId]
+GO
+ALTER TABLE [dbo].[RestaurantSpecialities]  WITH CHECK ADD  CONSTRAINT [FK_RestaurantSpecialities_Restaurants_RestaurantId] FOREIGN KEY([RestaurantId])
+REFERENCES [dbo].[Restaurants] ([RestaurantId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[RestaurantSpecialities] CHECK CONSTRAINT [FK_RestaurantSpecialities_Restaurants_RestaurantId]
+GO
+USE [master]
+GO
+ALTER DATABASE [HotPotDataBase] SET  READ_WRITE 
+GO
